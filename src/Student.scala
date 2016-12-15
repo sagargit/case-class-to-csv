@@ -4,7 +4,7 @@ case class Address(
                     )
 case class Email(
                   value: Option[String] = None,
-                  isPrimary: Option[String] = None
+                  isPrimary: Option[Boolean] = None
                   )
 
 case class Student(
@@ -61,7 +61,7 @@ case class Student(
 
     val emailIsPrimaryList = if(email.isDefined){
       email.get.map{
-        k => k.isPrimary.getOrElse(" ")
+        k => k.isPrimary.getOrElse("").toString
       }.toList.padTo(maximumLength," ")
     } else{
       List.tabulate(maximumLength)(k => " ")
